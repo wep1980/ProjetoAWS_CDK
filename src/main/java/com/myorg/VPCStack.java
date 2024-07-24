@@ -8,6 +8,9 @@ import software.constructs.Construct;
 // import software.amazon.awscdk.services.sqs.Queue;
 
 public class VPCStack extends Stack {
+
+    private Vpc vpc;
+
     public VPCStack(final Construct scope, final String id) {
         this(scope, id, null);
     }
@@ -15,8 +18,12 @@ public class VPCStack extends Stack {
     public VPCStack(final Construct scope, final String id, final StackProps props) {
         super(scope, id, props);
 
-        Vpc.Builder.create(this, "Vpc01")
+        vpc = Vpc.Builder.create(this, "Vpc01")
                 .maxAzs(3) // Quantidade maxima de zonas de disponibilidades que a vpc vai atuar
                 .build();
+    }
+
+    public Vpc getVpc() {
+        return vpc;
     }
 }
