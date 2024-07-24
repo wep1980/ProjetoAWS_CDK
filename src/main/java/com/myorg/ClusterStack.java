@@ -10,6 +10,7 @@ import software.constructs.Construct;
 
 public class ClusterStack extends Stack {
 
+    private Cluster cluster;
 
     public ClusterStack(final Construct scope, final String id, Vpc vpc) {
         this(scope, id, null, vpc);
@@ -24,5 +25,7 @@ public class ClusterStack extends Stack {
                 .build();
     }
 
-
+    public Cluster getCluster() {
+        return cluster;
+    }
 }
